@@ -28,12 +28,12 @@ CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     title VARCHAR(128) NOT NULL,
     description TEXT,
-    user_id BIGINT REFERENCES users (id)
+    user_id BIGINT REFERENCES users (id) ON DELETE CASCADE
 );
 
 CREATE TABLE reactions (
     id SERIAL PRIMARY KEY,
     type VARCHAR(32),
-    post_id BIGINT REFERENCES posts (id),
-    user_id BIGINT REFERENCES users (id)
+    post_id BIGINT REFERENCES posts (id) ON DELETE CASCADE ,
+    user_id BIGINT REFERENCES users (id) ON DELETE CASCADE
 );
