@@ -28,6 +28,20 @@ public class User extends AuditableEntity {
 	private String lastName;
 
 	@Builder.Default
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Post> posts = new ArrayList<>();
+
+	@Builder.Default
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Reaction> reactions = new ArrayList<>();
+
+	public void addPost(Post post) {
+		post.setUser(this);
+		this.posts.add(post);
+	}
+
+	public void addReaction(Reaction reaction) {
+		reaction.setUser(this);
+		this.reactions.add(reaction);
+	}
 }

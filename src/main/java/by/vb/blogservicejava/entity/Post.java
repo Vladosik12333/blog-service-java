@@ -25,6 +25,15 @@ public class Post extends AuditableEntity {
 	private User user;
 
 	@Builder.Default
-	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Reaction> reactions = new ArrayList<>();
+
+	public void addReaction(Reaction reaction) {
+		reaction.setPost(this);
+		this.reactions.add(reaction);
+	}
+
+	public void setUser(User user) {
+		user.addPost(this);
+	}
 }

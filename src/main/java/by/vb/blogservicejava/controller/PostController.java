@@ -11,14 +11,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/posts")
 @RequiredArgsConstructor
 public class PostController {
 	private final PostService postService;
 
+
+// implement list for sorting, filtering and pagination
+	@GetMapping
+	public ResponseEntity<List<PostDto>> findAll () {
+		List<PostDto> postDtoList = postService.findAllPosts();
+
+		return ResponseEntity.ok().body(postDtoList);
+	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<?> findById(@PathVariable final Long id) {
+	public ResponseEntity<PostDto> findById(@PathVariable final Long id) {
 		PostDto postDto =
 				postService.findPostById(id).orElseThrow(() -> new ResponseStatusException(
 						HttpStatus.NOT_FOUND));

@@ -22,4 +22,12 @@ public class Reaction extends AuditableEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "post_id", nullable = false)
 	private Post post;
+
+	public void setUser(User user) {
+		user.addReaction(this);
+	}
+
+	public void setPost(Post post) {
+		post.addReaction(this);
+	}
 }

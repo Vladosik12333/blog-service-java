@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @MappedSuperclass
 @Getter
@@ -19,18 +20,22 @@ public class AuditableEntity {
 	private LocalDateTime createdAt;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "modified_at")
+	@Column(name = "modified_at", nullable = false)
 	private LocalDateTime modifiedAt;
 
-	@Column(name = "is_removed")
+	@Column(name = "is_removed", nullable = false)
 	private Boolean isRemoved;
 
 	@PrePersist
 	private void prePersist() {
-		if (this.createdAt == null) {
-			this.createdAt = LocalDateTime.now();
+		LocalDateTime currentDate = LocalDateTime.now();
+
+		if (Objects.isNull(this.createdAt))
+			this.createdAt = currentDate;
+		if (Objects.isNull(this.modifiedAt))
+			this.modifiedAt = currentDate;
+		if (Objects.isNull(this.isRemoved))
 			this.isRemoved = false;
-		}
 	}
 
 	@PreUpdate
