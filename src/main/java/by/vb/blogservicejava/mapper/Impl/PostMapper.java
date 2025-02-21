@@ -17,10 +17,10 @@ public class PostMapper implements Mapper<Post, PostDto> {
 	private final UserMapper userMapper;
 
 	@Override
-	public PostDto mapToObject(@NotNull Post fromObject) {
+	public PostDto mapTo(@NotNull final Post fromObject) {
+		Objects.requireNonNull(fromObject, "Post cannot be null");
+
 		PostDto postDto = new PostDto();
-		if (Objects.isNull(fromObject))
-			return postDto;
 
 		postDto.setId(fromObject.getId());
 		postDto.setTitle(fromObject.getTitle());
@@ -29,7 +29,7 @@ public class PostMapper implements Mapper<Post, PostDto> {
 		postDto.setModifiedAt(fromObject.getModifiedAt());
 
 		UserDto userDto =
-				Optional.ofNullable(fromObject.getUser()).map(userMapper::mapToObject).orElse(null);
+				Optional.ofNullable(fromObject.getUser()).map(userMapper::mapTo).orElse(null);
 
 		postDto.setUser(userDto);
 

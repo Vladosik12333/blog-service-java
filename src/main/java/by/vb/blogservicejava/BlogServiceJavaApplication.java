@@ -16,7 +16,9 @@ public class BlogServiceJavaApplication {
 }
 
 // TODO:
-// 1. Documentation for created functionality
-// 2. Exception Handling
-// 5. Finish Post (delete and update)
-// 6. Add Register, Login, Auth, and so on (work on spring-security module)
+// 1. Make advanced request for ALL posts
+// 2. Add Register, Login, Auth, and so on (work on spring-security module)
+// 3. Add Reaction entity flows
+// 4. Add tests.
+
+// Documentation functionality

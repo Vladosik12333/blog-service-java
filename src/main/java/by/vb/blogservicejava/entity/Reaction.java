@@ -3,6 +3,8 @@ package by.vb.blogservicejava.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "reactions")
 @Builder
@@ -24,10 +26,26 @@ public class Reaction extends AuditableEntity {
 	private Post post;
 
 	public void setUser(User user) {
-		user.addReaction(this);
+		this.user = user;
+		user.getReactions().add(this);
 	}
 
 	public void setPost(Post post) {
-		post.addReaction(this);
+		this.post = post;
+		post.getReactions().add(this);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Reaction reaction))
+			return false;
+		return Objects.equals(id, reaction.id) && type == reaction.type && Objects.equals(user,
+				reaction.user) && Objects.equals(post,
+				reaction.post);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, type, user, post);
 	}
 }

@@ -13,18 +13,18 @@ import java.util.Objects;
 public class AuditableEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	protected Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created_at", nullable = false)
-	private LocalDateTime createdAt;
+	protected LocalDateTime createdAt;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "modified_at", nullable = false)
-	private LocalDateTime modifiedAt;
+	protected LocalDateTime modifiedAt;
 
 	@Column(name = "is_removed", nullable = false)
-	private Boolean isRemoved;
+	protected Boolean isRemoved;
 
 	@PrePersist
 	private void prePersist() {

@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -13,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"posts"})
+@ToString(exclude = {"posts", "reactions"})
 public class User extends AuditableEntity {
 	@Column(nullable = false, unique = true)
 	private String username;
@@ -43,5 +44,20 @@ public class User extends AuditableEntity {
 	public void addReaction(Reaction reaction) {
 		reaction.setUser(this);
 		this.reactions.add(reaction);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof User user))
+			return false;
+		return Objects.equals(id, user.id) && Objects.equals(username,
+				user.username) && Objects.equals(password,
+				user.password) && Objects.equals(firstName,
+				user.firstName) && Objects.equals(lastName, user.lastName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, username, password, firstName, lastName);
 	}
 }

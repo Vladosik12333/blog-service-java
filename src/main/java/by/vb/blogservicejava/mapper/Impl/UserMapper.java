@@ -12,9 +12,10 @@ import java.util.Objects;
 public class UserMapper implements Mapper<User, UserDto> {
 
 	@Override
-	public UserDto mapToObject(@NotNull User fromObject) {
+	public UserDto mapTo(@NotNull final User fromObject) {
+		Objects.requireNonNull(fromObject, "User cannot be null");
+
 		UserDto userDto = new UserDto();
-		if (Objects.isNull(fromObject)) return userDto;
 
 		userDto.setId(fromObject.getId());
 		userDto.setUsername(fromObject.getUsername());

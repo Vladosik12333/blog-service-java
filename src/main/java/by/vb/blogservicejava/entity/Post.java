@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "posts")
@@ -34,6 +35,21 @@ public class Post extends AuditableEntity {
 	}
 
 	public void setUser(User user) {
-		user.addPost(this);
+		this.user = user;
+		user.getPosts().add(this);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Post post))
+			return false;
+		return Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(
+				description,
+				post.description) && Objects.equals(user, post.user);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, title, description, user);
 	}
 }
