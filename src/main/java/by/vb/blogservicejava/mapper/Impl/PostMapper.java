@@ -26,12 +26,17 @@ public class PostMapper implements Mapper<Post, PostDto> {
 		postDto.setTitle(fromObject.getTitle());
 		postDto.setDescription(fromObject.getDescription());
 		postDto.setCreatedAt(fromObject.getCreatedAt());
-		postDto.setModifiedAt(fromObject.getModifiedAt());
+		postDto.setReactionsCount(fromObject.getReactions().size());
 
 		UserDto userDto =
 				Optional.ofNullable(fromObject.getUser()).map(userMapper::mapTo).orElse(null);
 
 		postDto.setUser(userDto);
+
+//		postDto.setReactions(fromObject.getReactions());
+
+//		user mapper
+
 
 		return postDto;
 	}

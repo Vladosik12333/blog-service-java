@@ -1,39 +1,42 @@
 package by.vb.blogservicejava.controller;
 
-import by.vb.blogservicejava.dto.PostCreateUpdateDto;
-import by.vb.blogservicejava.dto.PostDto;
-import by.vb.blogservicejava.dto.SuccessResponseDto;
+import by.vb.blogservicejava.dto.*;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/posts")
 @RequiredArgsConstructor
 public class PostController {
 	private final PostService postService;
 
-	// implement list for sorting, filtering and pagination
 	@GetMapping
-	public ResponseEntity<SuccessResponseDto<List<PostDto>>> findAll() {
-		SuccessResponseDto<List<PostDto>> successResponseDto = new SuccessResponseDto<>();
+	public ResponseEntity<PageResponseDto<PostDto>> findAll(
+			final PostFilter postFilter,
+			final PostSort postSort,
+			final Pageable pageable
+	) {
+		Page<PostDto> postDtoPage = postService.findAllPosts(postFilter, postSort, pageable);
 
-		List<PostDto> postDtoList = postService.findAllPosts();
+		PageResponseDto<PostDto> pageResponseDto = PageResponseDto.of(postDtoPage);
 
-		successResponseDto.setCode(HttpStatus.OK.value());
-		successResponseDto.setData(postDtoList);
+		pageResponseDto.setCode(HttpStatus.OK.value());
 
-		return ResponseEntity.ok().body(successResponseDto);
+		return ResponseEntity.ok().body(pageResponseDto);
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<SuccessResponseDto<PostDto>> findById(@PathVariable final Long id)  throws NotFoundResourceException {
+	public ResponseEntity<SuccessResponseDto<PostDto>> findById(@PathVariable final Long id)
+			throws NotFoundResourceException {
 		SuccessResponseDto<PostDto> successResponseDto = new SuccessResponseDto<>();
 
 		PostDto postDto = postService.findPostById(id)
@@ -63,7 +66,7 @@ public class PostController {
 	public ResponseEntity<SuccessResponseDto<PostDto>> updateById(
 			@PathVariable final Long id,
 			@Valid @RequestBody final PostCreateUpdateDto postCreateUpdateDto
-	) {
+	) throws NotFoundResourceException {
 		SuccessResponseDto<PostDto> successResponseDto = new SuccessResponseDto<>();
 
 		PostDto postDto = postService.updatePostById(id, postCreateUpdateDto)
@@ -76,10 +79,12 @@ public class PostController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<SuccessResponseDto<PostDto>> deleteById(@PathVariable final Long id) {
+	public ResponseEntity<SuccessResponseDto<PostDto>> deleteById(@PathVariable final Long id)
+			throws NotFoundResourceException {
 		SuccessResponseDto<PostDto> successResponseDto = new SuccessResponseDto<>();
 
-		PostDto postDto = postService.deletePostById(id).orElseThrow(this::generateNotFoundException);
+		PostDto postDto = postService.deletePostById(id)
+				.orElseThrow(this::generateNotFoundException);
 
 		successResponseDto.setCode(HttpStatus.OK.value());
 		successResponseDto.setData(postDto);

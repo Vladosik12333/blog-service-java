@@ -34,7 +34,7 @@ public class PostCreateUpdateMapper implements Mapper<PostCreateUpdateDto, Post>
 
 	@Override
 	public Post mapFromTo(@NotNull final PostCreateUpdateDto fromObject,
-	                      @NotNull final Post toObject) {
+	                      @NotNull final Post toObject) throws NotFoundResourceException {
 		Objects.requireNonNull(fromObject, "PostCreateEditDto cannot be null");
 		Objects.requireNonNull(toObject, "Post cannot be null");
 

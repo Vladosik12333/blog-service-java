@@ -16,9 +16,8 @@ public class BlogServiceJavaApplication {
 }
 
 // TODO:
-// 1. Make advanced request for ALL posts
-// 2. Add Register, Login, Auth, and so on (work on spring-security module)
-// 3. Add Reaction entity flows
-// 4. Add tests.
+// 1. Add Register, Login, Auth, and so on (work on spring-security module)
+// 2. Add Reaction entity flow
+// 3. Add tests.
 
 // Documentation functionality
