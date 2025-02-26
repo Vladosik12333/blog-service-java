@@ -20,7 +20,7 @@ public class PostCreateUpdateMapper implements Mapper<PostCreateUpdateDto, Post>
 	private final UserRepository userRepository;
 
 	@Override
-	public Post mapTo(@NotNull final PostCreateUpdateDto fromObject) throws NotFoundResourceException {
+	public Post mapTo(@NotNull final PostCreateUpdateDto fromObject)  {
 		Objects.requireNonNull(fromObject, "PostCreateEditDto cannot be null");
 
 		Post post = new Post();
@@ -34,7 +34,7 @@ public class PostCreateUpdateMapper implements Mapper<PostCreateUpdateDto, Post>
 
 	@Override
 	public Post mapFromTo(@NotNull final PostCreateUpdateDto fromObject,
-	                      @NotNull final Post toObject) throws NotFoundResourceException {
+	                      @NotNull final Post toObject)  {
 		Objects.requireNonNull(fromObject, "PostCreateEditDto cannot be null");
 		Objects.requireNonNull(toObject, "Post cannot be null");
 
@@ -45,7 +45,7 @@ public class PostCreateUpdateMapper implements Mapper<PostCreateUpdateDto, Post>
 		return toObject;
 	}
 
-	private User findUser(final Long id) throws NotFoundResourceException {
+	private User findUser(final Long id)  {
 		return userRepository.findById(id)
 				.orElseThrow(
 						() -> new NotFoundResourceException(

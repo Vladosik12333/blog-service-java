@@ -35,8 +35,9 @@ public class PostController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> findById(@PathVariable final Long id)
-			throws NotFoundResourceException {
+	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> findById(
+			@PathVariable final Long id
+	) {
 		SuccessResponseDto<PostDetailedDto> successResponseDto = new SuccessResponseDto<>();
 
 		PostDetailedDto postDetailedDto = postService.findPostById(id)
@@ -51,7 +52,7 @@ public class PostController {
 	@PostMapping
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> create(
 			@Valid @RequestBody final PostCreateUpdateDto postCreateUpdateDto
-	) throws NotFoundResourceException {
+	) {
 		SuccessResponseDto<PostDetailedDto> successResponseDto = new SuccessResponseDto<>();
 
 		PostDetailedDto postDetailedDto = postService.createPost(postCreateUpdateDto);
@@ -66,7 +67,7 @@ public class PostController {
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> updateById(
 			@PathVariable final Long id,
 			@Valid @RequestBody final PostCreateUpdateDto postCreateUpdateDto
-	) throws NotFoundResourceException {
+	) {
 		SuccessResponseDto<PostDetailedDto> successResponseDto = new SuccessResponseDto<>();
 
 		PostDetailedDto postDetailedDto = postService.updatePostById(id, postCreateUpdateDto)
@@ -79,8 +80,9 @@ public class PostController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> deleteById(@PathVariable final Long id)
-			throws NotFoundResourceException {
+	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> deleteById(
+			@PathVariable final Long id
+	) {
 		SuccessResponseDto<PostDetailedDto> successResponseDto = new SuccessResponseDto<>();
 
 		PostDetailedDto postDetailedDto = postService.deletePostById(id)
