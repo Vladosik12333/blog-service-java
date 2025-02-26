@@ -2,16 +2,12 @@ package by.vb.blogservicejava.dto;
 
 import lombok.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostFilter {
-	private FilterBy filterBy = new FilterBy();
-
-	@Data
-	@AllArgsConstructor
-	@NoArgsConstructor
-	public static class FilterBy {
-		private String title;
-	}
+	private Map<PostFilterField, String> filterFields = new HashMap<>();
 }

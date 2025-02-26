@@ -4,21 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostSort {
-	private SortBy sortBy = new SortBy();
-
-	@Data
-	@AllArgsConstructor
-	@NoArgsConstructor
-	public static class SortBy {
-		private Boolean title;
-		private Boolean description;
-		private Boolean username;
-		private Boolean firstName;
-		private Boolean lastName;
-		private Boolean createdAt;
-	}
+	private Map<PostSortField, Boolean> sortFields = new HashMap<>();
 }

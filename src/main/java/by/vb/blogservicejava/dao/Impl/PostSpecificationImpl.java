@@ -2,7 +2,9 @@ package by.vb.blogservicejava.dao.Impl;
 
 import by.vb.blogservicejava.dao.PostSpecification;
 import by.vb.blogservicejava.dto.PostFilter;
+import by.vb.blogservicejava.dto.PostFilterField;
 import by.vb.blogservicejava.dto.PostSort;
+import by.vb.blogservicejava.dto.PostSortField;
 import by.vb.blogservicejava.entity.Post;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.domain.Sort;
@@ -10,40 +12,36 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PostSpecificationImpl implements PostSpecification {
-	public Specification<Post> filterConditions(final PostFilter.FilterBy filterBy) {
-		return (book, cq, cb) -> {
+	public Specification<Post> filterConditions(final Map<PostFilterField, String> fields) {
+		return (post, cq, cb) -> {
 			final List<Predicate> filters = new ArrayList<>();
 
-			if (filterBy.getTitle() != null && !filterBy.getTitle().isBlank())
-				filters.add(cb.like(book.get("title"), "%" + filterBy.getTitle() + "%"));
+			fields.forEach((key, value) -> {
 
-			return cb.and(filters.toArray((new Predicate[0])));
+				if (value == null || value.isBlank())
+					return;
+
+				filters.add(cb.like(post.get(key.getColumnName()), "%" + value + "%"));
+			});
+
+			return cb.and(filters.toArray(new Predicate[0]));
 		};
 	}
 
 	@Override
-	public Sort sortConditions(final PostSort.SortBy sortBy) {
+	public Sort sortConditions(final Map<PostSortField, Boolean> fields) {
 		List<Sort.Order> orders = new ArrayList<>();
 
-		if (sortBy.getTitle() != null)
-			orders.add(new Sort.Order(sortDirection(sortBy.getTitle()), "title"));
+		fields.forEach((key, value) -> {
 
-		if (sortBy.getDescription() != null)
-			orders.add(new Sort.Order(sortDirection(sortBy.getDescription()), "description"));
+			if (value == null)
+				return;
 
-		if (sortBy.getUsername() != null)
-			orders.add(new Sort.Order(sortDirection(sortBy.getUsername()), "user.username"));
-
-		if (sortBy.getFirstName() != null)
-			orders.add(new Sort.Order(sortDirection(sortBy.getFirstName()), "user.firstName"));
-
-		if (sortBy.getLastName() != null)
-			orders.add(new Sort.Order(sortDirection(sortBy.getLastName()), "user.lastName"));
-
-		if (sortBy.getCreatedAt() != null)
-			orders.add(new Sort.Order(sortDirection(sortBy.getCreatedAt()), "createdAt"));
+			orders.add(new Sort.Order(sortDirection(value), key.getColumnName()));
+		});
 
 		return orders.isEmpty() ? Sort.unsorted() : Sort.by(orders);
 	}

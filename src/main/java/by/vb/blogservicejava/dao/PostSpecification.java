@@ -1,13 +1,15 @@
 package by.vb.blogservicejava.dao;
 
-import by.vb.blogservicejava.dto.PostFilter;
-import by.vb.blogservicejava.dto.PostSort;
+import by.vb.blogservicejava.dto.PostFilterField;
+import by.vb.blogservicejava.dto.PostSortField;
 import by.vb.blogservicejava.entity.Post;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 
-public interface PostSpecification {
-	Specification<Post> filterConditions(final PostFilter.FilterBy filterBy);
+import java.util.Map;
 
-	Sort sortConditions(final PostSort.SortBy sortBy);
+public interface PostSpecification {
+	Specification<Post> filterConditions(final Map<PostFilterField, String> fields);
+
+	Sort sortConditions(final Map<PostSortField, Boolean> fields);
 }

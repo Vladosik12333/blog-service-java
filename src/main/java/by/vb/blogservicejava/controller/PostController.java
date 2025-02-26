@@ -27,7 +27,7 @@ public class PostController {
 	) {
 		Page<PostDto> postDtoPage = postService.findAllPosts(postFilter, postSort, pageable);
 
-		PageResponseDto<PostDto> pageResponseDto = PageResponseDto.of(postDtoPage);
+		PageResponseDto<PostDto> pageResponseDto = new PageResponseDto<>(postDtoPage);
 
 		pageResponseDto.setCode(HttpStatus.OK.value());
 
@@ -35,59 +35,59 @@ public class PostController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<SuccessResponseDto<PostDto>> findById(@PathVariable final Long id)
+	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> findById(@PathVariable final Long id)
 			throws NotFoundResourceException {
-		SuccessResponseDto<PostDto> successResponseDto = new SuccessResponseDto<>();
+		SuccessResponseDto<PostDetailedDto> successResponseDto = new SuccessResponseDto<>();
 
-		PostDto postDto = postService.findPostById(id)
+		PostDetailedDto postDetailedDto = postService.findPostById(id)
 				.orElseThrow(this::generateNotFoundException);
 
 		successResponseDto.setCode(HttpStatus.OK.value());
-		successResponseDto.setData(postDto);
+		successResponseDto.setData(postDetailedDto);
 
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
 	@PostMapping
-	public ResponseEntity<SuccessResponseDto<PostDto>> create(
+	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> create(
 			@Valid @RequestBody final PostCreateUpdateDto postCreateUpdateDto
 	) throws NotFoundResourceException {
-		SuccessResponseDto<PostDto> successResponseDto = new SuccessResponseDto<>();
+		SuccessResponseDto<PostDetailedDto> successResponseDto = new SuccessResponseDto<>();
 
-		PostDto postDto = postService.createPost(postCreateUpdateDto);
+		PostDetailedDto postDetailedDto = postService.createPost(postCreateUpdateDto);
 
 		successResponseDto.setCode(HttpStatus.OK.value());
-		successResponseDto.setData(postDto);
+		successResponseDto.setData(postDetailedDto);
 
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<SuccessResponseDto<PostDto>> updateById(
+	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> updateById(
 			@PathVariable final Long id,
 			@Valid @RequestBody final PostCreateUpdateDto postCreateUpdateDto
 	) throws NotFoundResourceException {
-		SuccessResponseDto<PostDto> successResponseDto = new SuccessResponseDto<>();
+		SuccessResponseDto<PostDetailedDto> successResponseDto = new SuccessResponseDto<>();
 
-		PostDto postDto = postService.updatePostById(id, postCreateUpdateDto)
+		PostDetailedDto postDetailedDto = postService.updatePostById(id, postCreateUpdateDto)
 				.orElseThrow(this::generateNotFoundException);
 
 		successResponseDto.setCode(HttpStatus.OK.value());
-		successResponseDto.setData(postDto);
+		successResponseDto.setData(postDetailedDto);
 
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<SuccessResponseDto<PostDto>> deleteById(@PathVariable final Long id)
+	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> deleteById(@PathVariable final Long id)
 			throws NotFoundResourceException {
-		SuccessResponseDto<PostDto> successResponseDto = new SuccessResponseDto<>();
+		SuccessResponseDto<PostDetailedDto> successResponseDto = new SuccessResponseDto<>();
 
-		PostDto postDto = postService.deletePostById(id)
+		PostDetailedDto postDetailedDto = postService.deletePostById(id)
 				.orElseThrow(this::generateNotFoundException);
 
 		successResponseDto.setCode(HttpStatus.OK.value());
-		successResponseDto.setData(postDto);
+		successResponseDto.setData(postDetailedDto);
 
 		return ResponseEntity.ok().body(successResponseDto);
 	}

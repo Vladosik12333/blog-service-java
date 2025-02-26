@@ -7,16 +7,15 @@ import java.util.List;
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
 @ToString
 public class PageResponseDto<T> extends BasicResponseDto {
 	private List<T> data;
 	private Metadata metadata;
 
-	public static <T> PageResponseDto<T> of(Page<T> page) {
-		var metadata = new Metadata(page.getSize(), page.getNumber(), page.getTotalElements());
-		return new PageResponseDto<T>(page.getContent(), metadata);
+	public PageResponseDto(Page<T> page) {
+		this.metadata = new Metadata(page.getSize(), page.getNumber(), page.getTotalElements());
+		this.data = page.getContent();
+		this.message = "Success";
 	}
 
 	@Value

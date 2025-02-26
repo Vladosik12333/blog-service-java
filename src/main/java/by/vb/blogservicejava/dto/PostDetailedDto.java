@@ -11,8 +11,11 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostDto {
+public class PostDetailedDto {
 	private Long id;
 	private String title;
+	private String description;
+	private LocalDateTime createdAt;
+	private UserDto user;
 	private Integer reactionsCount;
 }
