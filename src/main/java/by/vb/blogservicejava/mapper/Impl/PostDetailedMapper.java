@@ -26,6 +26,7 @@ public class PostDetailedMapper implements Mapper<Post, PostDetailedDto> {
 		postDetailedDto.setTitle(fromObject.getTitle());
 		postDetailedDto.setDescription(fromObject.getDescription());
 		postDetailedDto.setCreatedAt(fromObject.getCreatedAt());
+		postDetailedDto.setModifiedAt(fromObject.getModifiedAt());
 		postDetailedDto.setReactionsCount(fromObject.getReactions().size());
 
 		UserDto userDto =

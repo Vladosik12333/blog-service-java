@@ -1,6 +1,8 @@
 package by.vb.blogservicejava.controller;
 
 import by.vb.blogservicejava.dto.*;
+import by.vb.blogservicejava.dto.response.PageResponseDto;
+import by.vb.blogservicejava.dto.response.SuccessResponseDto;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.service.PostService;
 import jakarta.validation.Valid;

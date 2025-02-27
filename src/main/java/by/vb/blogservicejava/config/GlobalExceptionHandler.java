@@ -1,6 +1,6 @@
 package by.vb.blogservicejava.config;
 
-import by.vb.blogservicejava.dto.ErrorResponseDto;
+import by.vb.blogservicejava.dto.response.ErrorResponseDto;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;

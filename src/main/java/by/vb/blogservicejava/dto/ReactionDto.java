@@ -1,5 +1,6 @@
 package by.vb.blogservicejava.dto;
 
+import by.vb.blogservicejava.entity.ReactionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,12 +12,10 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostDetailedDto {
+public class ReactionDto {
 	private Long id;
-	private String title;
-	private String description;
-	private LocalDateTime createdAt;
+	private ReactionType type;
 	private LocalDateTime modifiedAt;
+	private LocalDateTime createdAt;
 	private UserDto user;
-	private Integer reactionsCount;
 }
