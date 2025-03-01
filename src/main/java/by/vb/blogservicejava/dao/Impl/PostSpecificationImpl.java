@@ -1,9 +1,7 @@
 package by.vb.blogservicejava.dao.Impl;
 
 import by.vb.blogservicejava.dao.PostSpecification;
-import by.vb.blogservicejava.dto.PostFilter;
 import by.vb.blogservicejava.dto.PostFilterField;
-import by.vb.blogservicejava.dto.PostSort;
 import by.vb.blogservicejava.dto.PostSortField;
 import by.vb.blogservicejava.entity.Post;
 import jakarta.persistence.criteria.Predicate;

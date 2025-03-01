@@ -6,6 +6,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class BasicResponseDto {
 	protected Integer code;
 	protected String message;

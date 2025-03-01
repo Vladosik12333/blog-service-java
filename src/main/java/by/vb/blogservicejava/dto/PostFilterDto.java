@@ -8,6 +8,6 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostFilter {
+public class PostFilterDto {
 	private Map<PostFilterField, String> filterFields = new HashMap<>();
 }

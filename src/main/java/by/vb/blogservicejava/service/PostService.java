@@ -9,8 +9,8 @@ import java.util.Optional;
 
 public interface PostService {
 	Page<PostDto> findAllPosts(
-			final PostFilter postFilter,
-			final PostSort postSort,
+			final PostFilterDto postFilterDto,
+			final PostSortDto postSortDto,
 			final Pageable pageable
 	);
 

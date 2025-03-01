@@ -5,6 +5,7 @@ import by.vb.blogservicejava.dto.response.PageResponseDto;
 import by.vb.blogservicejava.dto.response.SuccessResponseDto;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.service.PostService;
+import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,11 +24,11 @@ public class PostController {
 
 	@GetMapping
 	public ResponseEntity<PageResponseDto<PostDto>> findAll(
-			final PostFilter postFilter,
-			final PostSort postSort,
-			final Pageable pageable
+			@Nullable final PostFilterDto postFilterDto,
+			@Nullable final PostSortDto postSortDto,
+			@Nullable final Pageable pageable
 	) {
-		Page<PostDto> postDtoPage = postService.findAllPosts(postFilter, postSort, pageable);
+		Page<PostDto> postDtoPage = postService.findAllPosts(postFilterDto, postSortDto, pageable);
 
 		PageResponseDto<PostDto> pageResponseDto = new PageResponseDto<>(postDtoPage);
 

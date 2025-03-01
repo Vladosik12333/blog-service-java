@@ -28,15 +28,15 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public Page<PostDto> findAllPosts(
-			final PostFilter postFilter,
-			final PostSort postSort, final Pageable pageable
+			final PostFilterDto postFilterDto,
+			final PostSortDto postSortDto, final Pageable pageable
 	) {
 
 		Pageable sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()
-				, postRepository.sortConditions(postSort.getSortFields()));
+				, postRepository.sortConditions(postSortDto.getSortFields()));
 
 		return postRepository.findAll(
-						postRepository.filterConditions(postFilter.getFilterFields()),
+						postRepository.filterConditions(postFilterDto.getFilterFields()),
 						sortedPageable)
 				.map(postMapper::mapTo);
 	}

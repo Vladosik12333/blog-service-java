@@ -10,6 +10,6 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostSort {
-	private Map<PostSortField, Boolean> sortFields = new HashMap<>();
+public class ReactionFilterDto {
+	Map<ReactionFilterField, String> filterFields = new HashMap<>();
 }
