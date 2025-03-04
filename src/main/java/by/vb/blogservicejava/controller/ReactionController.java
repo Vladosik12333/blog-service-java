@@ -7,6 +7,7 @@ import by.vb.blogservicejava.dto.response.PageResponseDto;
 import by.vb.blogservicejava.dto.response.SuccessResponseDto;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.service.ReactionService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Reactions", description = "The group of end-points to work with Reaction entity.")
 @RestController
 @RequestMapping("/reactions")
 @RequiredArgsConstructor

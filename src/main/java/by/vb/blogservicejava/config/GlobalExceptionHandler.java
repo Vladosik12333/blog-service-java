@@ -3,6 +3,7 @@ package by.vb.blogservicejava.config;
 import by.vb.blogservicejava.dto.response.ErrorResponseDto;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +14,21 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApiResponses(
+		value = {@ApiResponse(responseCode = "400", description = "Validation failed"),
+				@ApiResponse(responseCode = "404", description = "Resource not found."),
+				@ApiResponse(responseCode = "500", description = "Server Internal Error")
+		}
+)
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
-	@ApiResponse(responseCode = "500", description = "Server Internal Error")
 	public ResponseEntity<ErrorResponseDto> handleException(final Exception exception) {
 		log.error("Unexpected Error. Message={}. Stack Trace={}", exception.getMessage(),
 				exception.getStackTrace());
-		final ErrorResponseDto errorResponseDto = new ErrorResponseDto();
+		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		errorResponseDto.setMessage(exception.getMessage());
@@ -32,7 +38,6 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	@ApiResponse(responseCode = "400", description = "Validation failed")
 	public ResponseEntity<ErrorResponseDto> handleValidationException(
 			final MethodArgumentNotValidException exception
 	) {
@@ -53,9 +58,8 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(NotFoundResourceException.class)
-	@ApiResponse(responseCode = "404", description = "Resource not found.")
 	public ResponseEntity<ErrorResponseDto> handleNotFoundResourceException(
-			NotFoundResourceException exception
+			final NotFoundResourceException exception
 	) {
 		log.warn("Resource not found. Message={}", exception.getMessage());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();

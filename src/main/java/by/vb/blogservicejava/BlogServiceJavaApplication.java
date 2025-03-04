@@ -19,4 +19,4 @@ public class BlogServiceJavaApplication {
 // 1. Add Register, Login, Auth, and so on (work on spring-security module)
 // 2. Add tests.
 
-// Documentation, logging and Swagger bean
+// Documentation and logging
