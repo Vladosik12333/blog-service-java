@@ -25,9 +25,6 @@ public class AuditableEntity {
 	@Column(name = "modified_at", nullable = false)
 	protected LocalDateTime modifiedAt;
 
-	@Column(name = "is_removed", nullable = false)
-	protected Boolean isRemoved;
-
 	@PrePersist
 	private void prePersist() {
 		LocalDateTime currentDate = LocalDateTime.now();
@@ -36,8 +33,6 @@ public class AuditableEntity {
 			this.createdAt = currentDate;
 		if (Objects.isNull(this.modifiedAt))
 			this.modifiedAt = currentDate;
-		if (Objects.isNull(this.isRemoved))
-			this.isRemoved = false;
 	}
 
 	@PreUpdate

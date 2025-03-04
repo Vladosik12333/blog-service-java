@@ -16,6 +16,10 @@ import java.util.Objects;
 @NoArgsConstructor
 @ToString(exclude = {"posts", "reactions"})
 public class User extends AuditableEntity {
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private RoleType role;
+
 	@Column(nullable = false, unique = true)
 	private String username;
 
