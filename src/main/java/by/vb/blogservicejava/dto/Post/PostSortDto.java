@@ -1,4 +1,4 @@
-package by.vb.blogservicejava.dto;
+package by.vb.blogservicejava.dto.Post;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

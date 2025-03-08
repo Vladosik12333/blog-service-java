@@ -1,4 +1,4 @@
-package by.vb.blogservicejava.dto;
+package by.vb.blogservicejava.dto.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthResponseDto {
-	private String accessToken;
+public class AuthRequestDto {
+	private String username;
+	private String password;
 }

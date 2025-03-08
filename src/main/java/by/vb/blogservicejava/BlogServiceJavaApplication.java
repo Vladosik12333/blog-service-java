@@ -3,10 +3,6 @@ package by.vb.blogservicejava;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * Application Runner
- */
-
 @SpringBootApplication
 public class BlogServiceJavaApplication {
 
@@ -16,7 +12,7 @@ public class BlogServiceJavaApplication {
 }
 
 // TODO:
-// 1. Add Register, Login, Auth, and so on (work on spring-security module)
-// 2. Add tests.
+// 1. Add tests.
 
+// Review Security. Add Reaction by Id. Post not needed so 'cause only admins can access it.
 // Documentation and logging

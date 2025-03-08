@@ -1,7 +1,6 @@
 package by.vb.blogservicejava.service.Impl;
 
 import by.vb.blogservicejava.dao.UserRepository;
-import by.vb.blogservicejava.dto.UserDetailsDto;
 import by.vb.blogservicejava.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,7 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 		Optional<User> user = userRepository.findByUsername(username);
 
-		return user.map(UserDetailsDto::new)
+		return user
 				.orElseThrow(() -> new UsernameNotFoundException("User by username not found."));
 	}
 }

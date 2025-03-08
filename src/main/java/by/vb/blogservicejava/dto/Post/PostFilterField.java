@@ -1,12 +1,12 @@
-package by.vb.blogservicejava.dto;
+package by.vb.blogservicejava.dto.Post;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum ReactionFilterField {
-	TYPE("type");
+public enum PostFilterField {
+	TITLE("title");
 
 	private final String columnName;
 }

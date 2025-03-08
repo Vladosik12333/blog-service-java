@@ -1,4 +1,4 @@
-package by.vb.blogservicejava.dto;
+package by.vb.blogservicejava.dto.Post;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

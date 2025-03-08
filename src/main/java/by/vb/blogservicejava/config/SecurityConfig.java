@@ -5,7 +5,6 @@ import by.vb.blogservicejava.filters.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -34,18 +33,12 @@ public class SecurityConfig {
 			UserDetailsService userDetailsService
 	) throws Exception {
 		http.csrf(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(auth -> auth.requestMatchers("/users/**")
+				.authorizeHttpRequests(auth -> auth.requestMatchers("/users/signin")
+						.permitAll()
+						.requestMatchers("/users/signup")
 						.permitAll()
 						.requestMatchers("/reactions/**")
 						.hasAuthority(RoleType.USER.name())
-						.requestMatchers(HttpMethod.GET,"/posts/**")
-						.hasAuthority(RoleType.USER.name())
-						.requestMatchers(HttpMethod.POST, "/posts/**")
-						.hasAuthority(RoleType.ADMIN.name())
-						.requestMatchers(HttpMethod.PUT, "/posts/**")
-						.hasAuthority(RoleType.ADMIN.name())
-						.requestMatchers(HttpMethod.DELETE, "/posts/**")
-						.hasAuthority(RoleType.ADMIN.name())
 						.anyRequest()
 						.authenticated())
 				.sessionManagement(

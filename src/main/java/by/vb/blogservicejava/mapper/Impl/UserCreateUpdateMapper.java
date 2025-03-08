@@ -1,6 +1,6 @@
 package by.vb.blogservicejava.mapper.Impl;
 
-import by.vb.blogservicejava.dto.UserCreateUpdateDto;
+import by.vb.blogservicejava.dto.User.UserCreateUpdateDto;
 import by.vb.blogservicejava.entity.RoleType;
 import by.vb.blogservicejava.entity.User;
 import by.vb.blogservicejava.mapper.Mapper;

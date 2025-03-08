@@ -1,8 +1,8 @@
 package by.vb.blogservicejava.controller;
 
-import by.vb.blogservicejava.dto.*;
-import by.vb.blogservicejava.dto.response.PageResponseDto;
-import by.vb.blogservicejava.dto.response.SuccessResponseDto;
+import by.vb.blogservicejava.dto.Post.*;
+import by.vb.blogservicejava.dto.Response.PageResponseDto;
+import by.vb.blogservicejava.dto.Response.SuccessResponseDto;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.service.PostService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Posts", description = "The group of end-points to work with Post entity.")
@@ -39,6 +40,7 @@ public class PostController {
 		return ResponseEntity.ok().body(pageResponseDto);
 	}
 
+	@PreAuthorize("hasAuthority('USER')")
 	@GetMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> findById(
 			@PathVariable final Long id
@@ -54,6 +56,7 @@ public class PostController {
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> create(
 			@Valid @RequestBody final PostCreateUpdateDto postCreateUpdateDto
@@ -68,6 +71,7 @@ public class PostController {
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> updateById(
 			@PathVariable final Long id,
@@ -84,6 +88,7 @@ public class PostController {
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> deleteById(
 			@PathVariable final Long id

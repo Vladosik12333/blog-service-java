@@ -1,7 +1,7 @@
 package by.vb.blogservicejava.dao;
 
-import by.vb.blogservicejava.dto.PostFilterField;
-import by.vb.blogservicejava.dto.PostSortField;
+import by.vb.blogservicejava.dto.Post.PostFilterField;
+import by.vb.blogservicejava.dto.Post.PostSortField;
 import by.vb.blogservicejava.entity.Post;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;

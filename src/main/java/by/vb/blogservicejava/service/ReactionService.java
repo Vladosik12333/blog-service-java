@@ -1,8 +1,8 @@
 package by.vb.blogservicejava.service;
 
-import by.vb.blogservicejava.dto.ReactionCreateUpdateDto;
-import by.vb.blogservicejava.dto.ReactionDto;
-import by.vb.blogservicejava.dto.ReactionFilterDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionCreateUpdateDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionFilterDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

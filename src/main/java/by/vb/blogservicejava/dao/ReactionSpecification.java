@@ -1,6 +1,6 @@
 package by.vb.blogservicejava.dao;
 
-import by.vb.blogservicejava.dto.ReactionFilterField;
+import by.vb.blogservicejava.dto.Reaction.ReactionFilterField;
 import by.vb.blogservicejava.entity.Reaction;
 import org.springframework.data.jpa.domain.Specification;
 

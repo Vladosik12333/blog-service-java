@@ -1,9 +1,9 @@
 package by.vb.blogservicejava.service.Impl;
 
 import by.vb.blogservicejava.dao.ReactionRepository;
-import by.vb.blogservicejava.dto.ReactionCreateUpdateDto;
-import by.vb.blogservicejava.dto.ReactionDto;
-import by.vb.blogservicejava.dto.ReactionFilterDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionCreateUpdateDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionFilterDto;
 import by.vb.blogservicejava.mapper.Impl.ReactionCreateUpdateMapper;
 import by.vb.blogservicejava.mapper.Impl.ReactionMapper;
 import by.vb.blogservicejava.service.ReactionService;

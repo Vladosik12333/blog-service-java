@@ -1,12 +1,15 @@
 package by.vb.blogservicejava.service;
 
-import by.vb.blogservicejava.dto.AuthRequestDto;
-import by.vb.blogservicejava.dto.AuthResponseDto;
-import by.vb.blogservicejava.dto.UserCreateUpdateDto;
-import by.vb.blogservicejava.dto.UserDto;
+import by.vb.blogservicejava.dto.User.AuthRequestDto;
+import by.vb.blogservicejava.dto.User.AuthResponseDto;
+import by.vb.blogservicejava.dto.User.UserCreateUpdateDto;
+import by.vb.blogservicejava.dto.User.UserDto;
+import org.apache.coyote.BadRequestException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public interface UserService {
 	UserDto signUp(final UserCreateUpdateDto userCreateUpdateDto);
-	AuthResponseDto signIn(final AuthRequestDto authRequestDto) throws UsernameNotFoundException;
+	AuthResponseDto signIn(final AuthRequestDto authRequestDto)
+			throws UsernameNotFoundException, BadRequestException;
+	UserDto getUser();
 }

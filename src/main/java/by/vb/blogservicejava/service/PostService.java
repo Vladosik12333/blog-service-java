@@ -1,6 +1,6 @@
 package by.vb.blogservicejava.service;
 
-import by.vb.blogservicejava.dto.*;
+import by.vb.blogservicejava.dto.Post.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

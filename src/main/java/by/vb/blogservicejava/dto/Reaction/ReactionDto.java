@@ -1,5 +1,6 @@
-package by.vb.blogservicejava.dto;
+package by.vb.blogservicejava.dto.Reaction;
 
+import by.vb.blogservicejava.dto.User.UserDto;
 import by.vb.blogservicejava.entity.ReactionType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

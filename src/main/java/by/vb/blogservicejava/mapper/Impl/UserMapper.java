@@ -1,6 +1,6 @@
 package by.vb.blogservicejava.mapper.Impl;
 
-import by.vb.blogservicejava.dto.UserDto;
+import by.vb.blogservicejava.dto.User.UserDto;
 import by.vb.blogservicejava.entity.User;
 import by.vb.blogservicejava.mapper.Mapper;
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +21,7 @@ public class UserMapper implements Mapper<User, UserDto> {
 		userDto.setUsername(fromObject.getUsername());
 		userDto.setFirstName(fromObject.getFirstName());
 		userDto.setLastName(fromObject.getLastName());
+		userDto.setRole(fromObject.getRole().name());
 
 		return userDto;
 	}

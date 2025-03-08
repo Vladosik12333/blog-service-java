@@ -1,7 +1,7 @@
 package by.vb.blogservicejava.dao.Impl;
 
 import by.vb.blogservicejava.dao.ReactionSpecification;
-import by.vb.blogservicejava.dto.ReactionFilterField;
+import by.vb.blogservicejava.dto.Reaction.ReactionFilterField;
 import by.vb.blogservicejava.entity.Reaction;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;

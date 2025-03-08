@@ -1,10 +1,10 @@
 package by.vb.blogservicejava.controller;
 
-import by.vb.blogservicejava.dto.ReactionCreateUpdateDto;
-import by.vb.blogservicejava.dto.ReactionDto;
-import by.vb.blogservicejava.dto.ReactionFilterDto;
-import by.vb.blogservicejava.dto.response.PageResponseDto;
-import by.vb.blogservicejava.dto.response.SuccessResponseDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionCreateUpdateDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionFilterDto;
+import by.vb.blogservicejava.dto.Response.PageResponseDto;
+import by.vb.blogservicejava.dto.Response.SuccessResponseDto;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.service.ReactionService;
 import io.swagger.v3.oas.annotations.tags.Tag;

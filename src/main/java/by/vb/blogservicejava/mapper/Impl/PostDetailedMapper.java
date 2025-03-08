@@ -1,7 +1,7 @@
 package by.vb.blogservicejava.mapper.Impl;
 
-import by.vb.blogservicejava.dto.PostDetailedDto;
-import by.vb.blogservicejava.dto.UserDto;
+import by.vb.blogservicejava.dto.Post.PostDetailedDto;
+import by.vb.blogservicejava.dto.User.UserDto;
 import by.vb.blogservicejava.entity.Post;
 import by.vb.blogservicejava.mapper.Mapper;
 import jakarta.validation.constraints.NotNull;

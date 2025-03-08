@@ -1,7 +1,7 @@
 package by.vb.blogservicejava.mapper.Impl;
 
 import by.vb.blogservicejava.dao.UserRepository;
-import by.vb.blogservicejava.dto.ReactionCreateUpdateDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionCreateUpdateDto;
 import by.vb.blogservicejava.entity.Reaction;
 import by.vb.blogservicejava.entity.User;
 import by.vb.blogservicejava.exception.NotFoundResourceException;

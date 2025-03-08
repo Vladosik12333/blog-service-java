@@ -1,7 +1,7 @@
 package by.vb.blogservicejava.mapper.Impl;
 
 import by.vb.blogservicejava.dao.UserRepository;
-import by.vb.blogservicejava.dto.PostCreateUpdateDto;
+import by.vb.blogservicejava.dto.Post.PostCreateUpdateDto;
 import by.vb.blogservicejava.entity.Post;
 import by.vb.blogservicejava.entity.User;
 import by.vb.blogservicejava.exception.NotFoundResourceException;

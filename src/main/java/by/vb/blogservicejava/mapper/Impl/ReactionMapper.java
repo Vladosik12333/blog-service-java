@@ -1,9 +1,8 @@
 package by.vb.blogservicejava.mapper.Impl;
 
-import by.vb.blogservicejava.dto.ReactionDto;
-import by.vb.blogservicejava.dto.UserDto;
+import by.vb.blogservicejava.dto.Reaction.ReactionDto;
+import by.vb.blogservicejava.dto.User.UserDto;
 import by.vb.blogservicejava.entity.Reaction;
-import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.mapper.Mapper;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;

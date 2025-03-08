@@ -1,7 +1,7 @@
 package by.vb.blogservicejava.service.Impl;
 
 import by.vb.blogservicejava.dao.PostRepository;
-import by.vb.blogservicejava.dto.*;
+import by.vb.blogservicejava.dto.Post.*;
 import by.vb.blogservicejava.mapper.Impl.PostCreateUpdateMapper;
 import by.vb.blogservicejava.mapper.Impl.PostDetailedMapper;
 import by.vb.blogservicejava.mapper.Impl.PostMapper;

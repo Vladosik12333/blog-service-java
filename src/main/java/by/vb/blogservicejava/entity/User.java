@@ -2,10 +2,15 @@ package by.vb.blogservicejava.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Entity
 @Table(name = "users")
@@ -15,7 +20,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = {"posts", "reactions"})
-public class User extends AuditableEntity {
+public class User extends AuditableEntity implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private RoleType role;
@@ -63,5 +68,12 @@ public class User extends AuditableEntity {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, username, password, firstName, lastName);
+	}
+
+	public List<GrantedAuthority> getAuthorities() {
+		return Stream.of(this.getRole().name(), RoleType.USER.name())
+				.map(SimpleGrantedAuthority::new)
+				.collect(
+						Collectors.toList());
 	}
 }

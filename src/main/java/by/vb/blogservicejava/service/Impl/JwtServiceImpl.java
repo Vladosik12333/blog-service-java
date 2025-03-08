@@ -20,20 +20,12 @@ public class JwtServiceImpl implements JwtService {
 	@Value("${JWT_SECRET}")
 	private String SECRET;
 
+	@Value("${JWT_PERIOD}")
+	private long PERIOD;
+
 	public String generateToken(String userName) {
 		final Map<String, Object> claims = new HashMap<>();
 		return createToken(claims, userName);
-	}
-
-	private String createToken(final Map<String, Object> claims, final String userName) {
-		return Jwts.builder()
-				.setClaims(claims)
-				.setSubject(userName)
-				.setIssuedAt(new Date())
-				.setExpiration(new Date(
-						System.currentTimeMillis() + (1000L * 60 * 60 * 24 * 30)))
-				.signWith(getSignKey(), SignatureAlgorithm.HS256)
-				.compact();
 	}
 
 	public String extractUsername(final String token) {
@@ -48,11 +40,6 @@ public class JwtServiceImpl implements JwtService {
 		return extractExpiration(token).after(new Date());
 	}
 
-	private Key getSignKey() {
-		final byte[] keyBytes = Decoders.BASE64.decode(SECRET);
-		return Keys.hmacShaKeyFor(keyBytes);
-	}
-
 	private <T> T extractClaim(final String token, final Function<Claims, T> claimResolver) {
 		final Claims claims =
 				Jwts.parserBuilder()
@@ -62,5 +49,21 @@ public class JwtServiceImpl implements JwtService {
 						.getBody();
 
 		return claimResolver.apply(claims);
+	}
+
+	private String createToken(final Map<String, Object> claims, final String userName) {
+		return Jwts.builder()
+				.setClaims(claims)
+				.setSubject(userName)
+				.setIssuedAt(new Date())
+				.setExpiration(new Date(
+						System.currentTimeMillis() + PERIOD))
+				.signWith(getSignKey(), SignatureAlgorithm.HS256)
+				.compact();
+	}
+
+	private Key getSignKey() {
+		final byte[] keyBytes = Decoders.BASE64.decode(SECRET);
+		return Keys.hmacShaKeyFor(keyBytes);
 	}
 }

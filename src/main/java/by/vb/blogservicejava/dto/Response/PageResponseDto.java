@@ -1,4 +1,4 @@
-package by.vb.blogservicejava.dto.response;
+package by.vb.blogservicejava.dto.Response;
 
 import lombok.*;
 import org.springframework.data.domain.Page;
