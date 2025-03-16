@@ -7,6 +7,7 @@ import by.vb.blogservicejava.entity.User;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.mapper.Mapper;
 import by.vb.blogservicejava.mapper.UpdateMapper;
+import by.vb.blogservicejava.util.AuthUtil;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -27,7 +28,7 @@ public class PostCreateUpdateMapper implements Mapper<PostCreateUpdateDto, Post>
 
 		post.setTitle(fromObject.getTitle());
 		post.setDescription(fromObject.getDescription());
-		post.setUser(findUser(fromObject.getUserId()));
+		post.setUser(findUser(AuthUtil.getCurrentUser().getId()));
 
 		return post;
 	}
@@ -40,7 +41,7 @@ public class PostCreateUpdateMapper implements Mapper<PostCreateUpdateDto, Post>
 
 		toObject.setTitle(fromObject.getTitle());
 		toObject.setDescription(fromObject.getDescription());
-		toObject.setUser(findUser(fromObject.getUserId()));
+		toObject.setUser(findUser(AuthUtil.getCurrentUser().getId()));
 
 		return toObject;
 	}

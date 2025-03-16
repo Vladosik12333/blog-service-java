@@ -14,6 +14,4 @@ import lombok.NoArgsConstructor;
 public class ReactionCreateUpdateDto {
 	@NotNull(message = "reactionType cannot be null")
 	ReactionType reactionType;
-	@NotNull(message = "userId cannot be null")
-	Long userId;
 }

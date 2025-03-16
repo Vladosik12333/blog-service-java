@@ -17,6 +17,4 @@ public class PostCreateUpdateDto {
 	@NotBlank(message = "title cannot be blank")
 	private String title;
 	private String description;
-	@NotNull(message = "userId cannot be null")
-	private Long userId;
 }

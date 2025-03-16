@@ -33,11 +33,10 @@ public class SecurityConfig {
 			UserDetailsService userDetailsService
 	) throws Exception {
 		http.csrf(AbstractHttpConfigurer::disable)
-				.authorizeHttpRequests(auth -> auth.requestMatchers("/users/signin")
+				.authorizeHttpRequests(auth -> auth.requestMatchers("users/signin", "users/signup",
+								"/health-check/ping", "/swagger-ui/**", "v3/api-docs/**")
 						.permitAll()
-						.requestMatchers("/users/signup")
-						.permitAll()
-						.requestMatchers("/reactions/**")
+						.requestMatchers("reactions/**", "/posts/**", "/users/**")
 						.hasAuthority(RoleType.USER.name())
 						.anyRequest()
 						.authenticated())

@@ -14,5 +14,5 @@ public class BlogServiceJavaApplication {
 // TODO:
 // 1. Add tests.
 
-// Review Security. Add Reaction by Id. Post not needed so 'cause only admins can access it.
+// Review Security. Add Reaction by Id.
 // Documentation and logging

@@ -7,6 +7,7 @@ import by.vb.blogservicejava.entity.User;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import by.vb.blogservicejava.mapper.Mapper;
 import by.vb.blogservicejava.mapper.UpdateMapper;
+import by.vb.blogservicejava.util.AuthUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,7 @@ public class ReactionCreateUpdateMapper implements Mapper<ReactionCreateUpdateDt
 		Reaction reaction = new Reaction();
 
 		reaction.setType(fromObject.getReactionType());
-		reaction.setUser(getUser(fromObject.getUserId()));
+		reaction.setUser(getUser(AuthUtil.getCurrentUser().getId()));
 
 		return reaction;
 	}
@@ -35,7 +36,7 @@ public class ReactionCreateUpdateMapper implements Mapper<ReactionCreateUpdateDt
 		Objects.requireNonNull(fromObject, "ReactionCreateUpdateDto cannot be null");
 
 		toObject.setType(fromObject.getReactionType());
-		toObject.setUser(getUser(fromObject.getUserId()));
+		toObject.setUser(getUser(AuthUtil.getCurrentUser().getId()));
 
 		return toObject;
 	}

@@ -1,6 +1,7 @@
 package by.vb.blogservicejava.config;
 
 import by.vb.blogservicejava.dto.Response.ErrorResponseDto;
+import by.vb.blogservicejava.exception.NotAuthorizedException;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.security.SignatureException;
@@ -91,6 +92,21 @@ public class GlobalExceptionHandler {
 
 		log.warn("NotFoundResourceException. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(errorResponseDto);
+	}
+
+	@ExceptionHandler(NotAuthorizedException.class)
+	public ResponseEntity<ErrorResponseDto> handleNotAuthorizedException(
+			final NotAuthorizedException exception
+	) {
+		log.warn("NotAuthorizedException. Message={}", exception.getMessage());
+		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
+
+		errorResponseDto.setCode(HttpStatus.UNAUTHORIZED.value());
+		errorResponseDto.setMessage(exception.getMessage());
+
+		log.warn("NotAuthorizedException. Response={}", errorResponseDto);
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
 				.body(errorResponseDto);
 	}
 
