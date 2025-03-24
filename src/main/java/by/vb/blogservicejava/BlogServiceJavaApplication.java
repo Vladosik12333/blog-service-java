@@ -13,6 +13,6 @@ public class BlogServiceJavaApplication {
 
 // TODO:
 // 1. Add tests.
+// 2. Documentation and logging
 
-// Review Security. Add Reaction by Id.
-// Documentation and logging
+// Review Security and make auth from Swagger

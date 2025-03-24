@@ -36,7 +36,6 @@ public class ReactionCreateUpdateMapper implements Mapper<ReactionCreateUpdateDt
 		Objects.requireNonNull(fromObject, "ReactionCreateUpdateDto cannot be null");
 
 		toObject.setType(fromObject.getReactionType());
-		toObject.setUser(getUser(AuthUtil.getCurrentUser().getId()));
 
 		return toObject;
 	}

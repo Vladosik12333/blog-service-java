@@ -41,7 +41,6 @@ public class PostCreateUpdateMapper implements Mapper<PostCreateUpdateDto, Post>
 
 		toObject.setTitle(fromObject.getTitle());
 		toObject.setDescription(fromObject.getDescription());
-		toObject.setUser(findUser(AuthUtil.getCurrentUser().getId()));
 
 		return toObject;
 	}

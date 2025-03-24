@@ -1,6 +1,5 @@
 package by.vb.blogservicejava.config;
 
-import by.vb.blogservicejava.entity.RoleType;
 import by.vb.blogservicejava.filters.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -37,7 +36,7 @@ public class SecurityConfig {
 								"/health-check/ping", "/swagger-ui/**", "v3/api-docs/**")
 						.permitAll()
 						.requestMatchers("reactions/**", "/posts/**", "/users/**")
-						.hasAuthority(RoleType.USER.name())
+						.hasAnyRole("USER", "ADMIN")
 						.anyRequest()
 						.authenticated())
 				.sessionManagement(

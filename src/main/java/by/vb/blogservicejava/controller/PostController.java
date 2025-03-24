@@ -40,7 +40,7 @@ public class PostController {
 		return ResponseEntity.ok().body(pageResponseDto);
 	}
 
-	@PreAuthorize("hasAuthority('USER')")
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> findById(
 			@PathVariable final Long id
@@ -56,7 +56,7 @@ public class PostController {
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> create(
 			@Valid @RequestBody final PostCreateUpdateDto postCreateUpdateDto
@@ -71,7 +71,7 @@ public class PostController {
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> updateById(
 			@PathVariable final Long id,
@@ -88,7 +88,7 @@ public class PostController {
 		return ResponseEntity.ok().body(successResponseDto);
 	}
 
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> deleteById(
 			@PathVariable final Long id

@@ -55,6 +55,13 @@ public class User extends AuditableEntity implements UserDetails {
 		this.reactions.add(reaction);
 	}
 
+	public List<GrantedAuthority> getAuthorities() {
+		return Stream.of("ROLE_" + this.getRole().name())
+				.map(SimpleGrantedAuthority::new)
+				.collect(
+						Collectors.toList());
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof User user))
@@ -68,12 +75,5 @@ public class User extends AuditableEntity implements UserDetails {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, username, password, firstName, lastName);
-	}
-
-	public List<GrantedAuthority> getAuthorities() {
-		return Stream.of(this.getRole().name(), RoleType.USER.name())
-				.map(SimpleGrantedAuthority::new)
-				.collect(
-						Collectors.toList());
 	}
 }
