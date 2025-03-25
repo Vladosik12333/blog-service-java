@@ -40,7 +40,6 @@ public class PostController {
 		return ResponseEntity.ok().body(pageResponseDto);
 	}
 
-	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@GetMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<PostDetailedDto>> findById(
 			@PathVariable final Long id

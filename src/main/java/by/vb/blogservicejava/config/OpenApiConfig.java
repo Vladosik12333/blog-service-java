@@ -3,6 +3,8 @@ package by.vb.blogservicejava.config;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,9 +13,19 @@ public class OpenApiConfig {
 
 	@Bean
 	public OpenAPI customOpenAPI() {
-		return new OpenAPI().components(new Components())
+		return new OpenAPI().addSecurityItem(new SecurityRequirement().addList("Bearer " +
+		                                                                       "Authentication"))
+				.components(new Components().addSecuritySchemes("Bearer Authentication",
+						createAPISecurityScheme()))
 				.info(new Info().title("Blog Service API")
-				.description("Blog Service Service implemented with Spring Framework and Java 23" +
-				             ".").version("1.0.0"));
+						.description(
+								"Blog Service Service implemented with Spring Framework and Java 23" +
+								".").version("1.0.0"));
+	}
+
+	private SecurityScheme createAPISecurityScheme() {
+		return new SecurityScheme().type(SecurityScheme.Type.HTTP)
+				.bearerFormat("JWT")
+				.scheme("bearer");
 	}
 }

@@ -27,8 +27,8 @@ public class ReactionController {
 
 	@GetMapping()
 	public PageResponseDto<ReactionDto> getAllReactions(
-			@Nullable final Pageable pageable, final
-			@Nullable ReactionFilterDto filter
+			final Pageable pageable, final
+			ReactionFilterDto filter
 	) {
 
 		final Page<ReactionDto> reactions = reactionService.getAllReactions(pageable, filter);
@@ -40,7 +40,9 @@ public class ReactionController {
 		return responseDto;
 	}
 
-	@PreAuthorize("@userServiceImpl.hasOwnershipAccess(#id, T(by.vb.blogservicejava.dao.ReactionRepository))")
+	@PreAuthorize(
+			"@userServiceImpl.hasOwnershipAccess(#id, T(by.vb.blogservicejava.dao.ReactionRepository))"
+	)
 	@DeleteMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<ReactionDto>> deleteReactionById(
 			@PathVariable final long id
@@ -71,7 +73,9 @@ public class ReactionController {
 		return ResponseEntity.ok().body(responseDto);
 	}
 
-	@PreAuthorize("@userServiceImpl.hasOwnershipAccess(#id, T(by.vb.blogservicejava.dao.ReactionRepository))")
+	@PreAuthorize(
+			"@userServiceImpl.hasOwnershipAccess(#id, T(by.vb.blogservicejava.dao.ReactionRepository))"
+	)
 	@PutMapping("/{id}")
 	public ResponseEntity<SuccessResponseDto<ReactionDto>> updateReactionById(
 			@PathVariable final long id,

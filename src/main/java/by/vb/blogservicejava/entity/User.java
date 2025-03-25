@@ -55,6 +55,7 @@ public class User extends AuditableEntity implements UserDetails {
 		this.reactions.add(reaction);
 	}
 
+	@Override
 	public List<GrantedAuthority> getAuthorities() {
 		return Stream.of("ROLE_" + this.getRole().name())
 				.map(SimpleGrantedAuthority::new)
