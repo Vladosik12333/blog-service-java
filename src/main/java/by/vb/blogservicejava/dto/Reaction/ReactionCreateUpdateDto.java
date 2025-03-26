@@ -1,6 +1,7 @@
 package by.vb.blogservicejava.dto.Reaction;
 
 import by.vb.blogservicejava.entity.ReactionType;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,5 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReactionCreateUpdateDto {
 	@NotNull(message = "reactionType cannot be null")
-	ReactionType reactionType;
+	private ReactionType reactionType;
+	@Min(message = "postId cannot be blank", value = 1)
+	private Long postId;
 }
