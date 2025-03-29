@@ -1,7 +1,5 @@
 package by.vb.blogservicejava.integration;
 
-import by.vb.blogservicejava.BlogServiceJavaApplication;
-import by.vb.blogservicejava.BlogServiceJavaApplicationTest;
 import by.vb.blogservicejava.dao.PostRepository;
 import by.vb.blogservicejava.dao.ReactionRepository;
 import by.vb.blogservicejava.dao.UserRepository;
@@ -13,9 +11,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.test.web.servlet.MockMvc;
 
-@SpringBootTest(classes = {BlogServiceJavaApplication.class, BlogServiceJavaApplicationTest.class})
+@SpringBootTest
 @AutoConfigureMockMvc
 public class BaseIntegrationTest {
 	@Autowired
@@ -24,9 +21,6 @@ public class BaseIntegrationTest {
 	private UserRepository userRepository;
 	@Autowired
 	private PostRepository postRepository;
-
-	@Autowired
-	protected MockMvc mockMvc;
 
 	protected User user;
 	protected Post post;

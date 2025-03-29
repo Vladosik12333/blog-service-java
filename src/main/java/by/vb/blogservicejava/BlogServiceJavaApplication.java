@@ -12,5 +12,4 @@ public class BlogServiceJavaApplication {
 }
 
 // TODO:
-// Finish tests
 // Documentation and logging

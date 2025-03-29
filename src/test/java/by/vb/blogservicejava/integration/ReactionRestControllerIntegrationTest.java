@@ -6,18 +6,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class ReactionRestControllerIntegrationTest extends BaseIntegrationTest {
 	@Autowired
+	protected MockMvc mockMvc;
+
+	@Autowired
 	private ObjectMapper objectMapper;
 
 	@Test
 	public void getAllReactions() throws Exception {
-		mockMvc.perform(get("/reactions")
-						.contentType(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/reactions"))
 				.andExpect(status().is2xxSuccessful())
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 				.andExpect(jsonPath("$.metadata.totalElements").value(1));
