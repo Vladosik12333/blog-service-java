@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class ReactionCreateUpdateDto {
 	@NotNull(message = "reactionType cannot be null")
 	private ReactionType reactionType;
-	@Min(message = "postId cannot be blank", value = 1)
+	@NotNull(message = "postId cannot be null")
+	@Min(message = "postId cannot be less than 1", value = 1)
 	private Long postId;
 }

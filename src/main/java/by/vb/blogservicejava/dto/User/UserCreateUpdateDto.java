@@ -1,5 +1,6 @@
 package by.vb.blogservicejava.dto.User;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,8 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserCreateUpdateDto {
+	@NotBlank(message = "username cannot be blank")
 	private String username;
+	@NotBlank(message = "password cannot be blank")
+	private String password;
 	private String firstName;
 	private String lastName;
-	private String password;
 }
