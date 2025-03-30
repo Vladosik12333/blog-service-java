@@ -10,6 +10,3 @@ public class BlogServiceJavaApplication {
 		SpringApplication.run(BlogServiceJavaApplication.class, args);
 	}
 }
-
-// TODO:
-// Documentation and logging

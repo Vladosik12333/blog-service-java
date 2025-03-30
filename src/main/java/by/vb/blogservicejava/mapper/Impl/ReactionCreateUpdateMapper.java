@@ -43,8 +43,6 @@ public class ReactionCreateUpdateMapper implements Mapper<ReactionCreateUpdateDt
 		toObject.setPost(getPost(fromObject.getPostId()));
 		toObject.setType(fromObject.getReactionType());
 
-		log.info("asdasdas: {}", toObject.getPost());
-
 		return toObject;
 	}
 

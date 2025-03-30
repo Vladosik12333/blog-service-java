@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PostSpecificationImpl implements PostSpecification {
 	public Specification<Post> filterConditions(final Map<PostFilterField, String> fields) {
-		return (post, cq, cb) -> {
+		return (post, _, cb) -> {
 			final List<Predicate> filters = new ArrayList<>();
 
 			fields.forEach((key, value) -> {

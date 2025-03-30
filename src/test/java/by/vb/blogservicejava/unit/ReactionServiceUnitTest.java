@@ -85,7 +85,7 @@ public class ReactionServiceUnitTest {
 	public void getAllReactions() {
 		ReactionFilterDto reactionFilterDto = new ReactionFilterDto(new HashMap<>());
 		Pageable pageable = Pageable.ofSize(1);
-		Specification<Reaction> specification = (reaction, cq, cb) -> null;
+		Specification<Reaction> specification = (_, _, _) -> null;
 
 		given(reactionRepository.filterConditions(reactionFilterDto.getFilterFields())).willReturn(
 				specification);
@@ -99,7 +99,7 @@ public class ReactionServiceUnitTest {
 
 		assertThat(pageReactionsDto).isNotNull();
 		assertThat(pageReactionsDto.getTotalElements()).isEqualTo(2);
-		assertThat(pageReactionsDto.getContent().get(0).getType()).isEqualTo(
+		assertThat(pageReactionsDto.getContent().getFirst().getType()).isEqualTo(
 				reactionDtoToReturn.getType());
 	}
 

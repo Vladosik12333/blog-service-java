@@ -9,7 +9,19 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.Map;
 
 public interface PostSpecification {
+	/**
+	 * Returns specification for filtering conditions
+	 *
+	 * @param fields filtering conditions
+	 * @return specification for filtering conditions
+	 */
 	Specification<Post> filterConditions(final Map<PostFilterField, String> fields);
 
+	/**
+	 * Returns specification for sorting conditions
+	 *
+	 * @param fields sorting conditions
+	 * @return specification for sorting conditions
+	 */
 	Sort sortConditions(final Map<PostSortField, Boolean> fields);
 }

@@ -13,7 +13,7 @@ import java.util.Map;
 public class ReactionSpecificationImpl implements ReactionSpecification {
 	@Override
 	public Specification<Reaction> filterConditions(Map<ReactionFilterField, String> fields) {
-		return (reaction, cq, cb) -> {
+		return (reaction, _, cb) -> {
 			List<Predicate> predicates = new ArrayList<>();
 
 			fields.forEach((field, value) ->

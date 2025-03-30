@@ -31,17 +31,15 @@ import java.util.List;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponseDto> handleException(final Exception exception) {
-		log.error("Unexpected Error. Message={}. Stack Trace={}", exception.getMessage(),
+		log.error("Unexpected Error. Message={} Stack={}", exception.getMessage(),
 				exception.getStackTrace());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		errorResponseDto.setMessage(exception.getMessage());
 
-		log.error("Unexpected Error. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponseDto);
 	}
 
@@ -49,14 +47,13 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleBadRequestException(
 			final BadRequestException exception
 	) {
-		log.warn("BadRequestException. Message={}. Stack Trace={}", exception.getMessage(),
+		log.warn("BadRequestException. Message={}. Stack={}", exception.getMessage(),
 				exception.getStackTrace());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.BAD_REQUEST.value());
 		errorResponseDto.setMessage(exception.getMessage());
 
-		log.warn("BadRequestException. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponseDto);
 	}
 
@@ -64,7 +61,8 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleValidationException(
 			final MethodArgumentNotValidException exception
 	) {
-		log.warn("MethodArgumentNotValidException. Message={}", exception.getMessage());
+		log.warn("MethodArgumentNotValidException. Message={} Stack={}", exception.getMessage(),
+				exception.getStackTrace());
 		ErrorResponseDto ErrorResponseDto = new ErrorResponseDto();
 		List<String> errors = new ArrayList<>();
 
@@ -76,7 +74,6 @@ public class GlobalExceptionHandler {
 		ErrorResponseDto.setMessage(HttpStatus.BAD_REQUEST.getReasonPhrase());
 		ErrorResponseDto.setErrors(errors);
 
-		log.warn("MethodArgumentNotValidException. Response={}", ErrorResponseDto);
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponseDto);
 	}
 
@@ -84,13 +81,13 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleNotFoundResourceException(
 			final NotFoundResourceException exception
 	) {
-		log.warn("NotFoundResourceException. Message={}", exception.getMessage());
+		log.warn("NotFoundResourceException. Message={} Stack={}", exception.getMessage(),
+				exception.getStackTrace());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.NOT_FOUND.value());
 		errorResponseDto.setMessage(exception.getMessage());
 
-		log.warn("NotFoundResourceException. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
 				.body(errorResponseDto);
 	}
@@ -99,13 +96,13 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleNotAuthorizedException(
 			final NotAuthorizedException exception
 	) {
-		log.warn("NotAuthorizedException. Message={}", exception.getMessage());
+		log.warn("NotAuthorizedException. Message={} Stack={}", exception.getMessage(),
+				exception.getStackTrace());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.UNAUTHORIZED.value());
 		errorResponseDto.setMessage(exception.getMessage());
 
-		log.warn("NotAuthorizedException. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
 				.body(errorResponseDto);
 	}
@@ -114,13 +111,13 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleBadCredentialsException(
 			final BadCredentialsException exception
 	) {
-		log.warn("BadCredentialsException. Message={}", exception.getMessage());
+		log.warn("BadCredentialsException. Message={} Stack={}", exception.getMessage(),
+				exception.getStackTrace());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.UNAUTHORIZED.value());
 		errorResponseDto.setMessage("The username or password is incorrect.");
 
-		log.warn("BadCredentialsException. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
 				.body(errorResponseDto);
 	}
@@ -129,13 +126,13 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleAccessDeniedException(
 			final AccessDeniedException exception
 	) {
-		log.warn("AccessDeniedException. Message={}", exception.getMessage());
+		log.warn("AccessDeniedException. Message={} Stack={}", exception.getMessage(),
+				exception.getStackTrace());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.FORBIDDEN.value());
 		errorResponseDto.setMessage("The user does not have access to this resource.");
 
-		log.warn("AccessDeniedException. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.FORBIDDEN)
 				.body(errorResponseDto);
 	}
@@ -144,13 +141,13 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleSignatureException(
 			final SignatureException exception
 	) {
-		log.warn("SignatureException. Message={}", exception.getMessage());
+		log.warn("SignatureException. Message={} Stack={}", exception.getMessage(),
+				exception.getStackTrace());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.FORBIDDEN.value());
 		errorResponseDto.setMessage("The JWT token is invalid.");
 
-		log.warn("SignatureException. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.FORBIDDEN)
 				.body(errorResponseDto);
 	}
@@ -159,13 +156,13 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponseDto> handleExpiredJwtException(
 			final ExpiredJwtException exception
 	) {
-		log.warn("ExpiredJwtException. Message={}", exception.getMessage());
+		log.warn("ExpiredJwtException. Message={} Stack={}", exception.getMessage(),
+				exception.getStackTrace());
 		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
 
 		errorResponseDto.setCode(HttpStatus.FORBIDDEN.value());
 		errorResponseDto.setMessage("The JWT token is expired.");
 
-		log.warn("ExpiredJwtException. Response={}", errorResponseDto);
 		return ResponseEntity.status(HttpStatus.FORBIDDEN)
 				.body(errorResponseDto);
 	}
