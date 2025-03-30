@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface ReactionSpecification {
 	/**
-	 * Returns specification for filtering conditions
+	 * Returns specification for filtering conditions of Reaction
 	 *
 	 * @param fields filtering conditions
 	 * @return specification for filtering conditions

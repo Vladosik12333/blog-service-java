@@ -9,7 +9,6 @@ import by.vb.blogservicejava.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +39,7 @@ public class UserController {
 	public ResponseEntity<SuccessResponseDto<AuthResponseDto>> signIn(
 			@Valid @RequestBody
 			AuthRequestDto authRequestDto
-	) throws BadRequestException {
+	) {
 		AuthResponseDto authDto = userService.signIn(authRequestDto);
 
 		SuccessResponseDto<AuthResponseDto> response = new SuccessResponseDto<>();

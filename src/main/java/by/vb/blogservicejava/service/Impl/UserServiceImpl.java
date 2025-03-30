@@ -19,7 +19,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
@@ -48,8 +47,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public AuthResponseDto signIn(final AuthRequestDto authRequestDto)
-			throws UsernameNotFoundException {
+	public AuthResponseDto signIn(final AuthRequestDto authRequestDto) {
 		authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(authRequestDto.getUsername(),
 						authRequestDto.getPassword()));
@@ -76,7 +74,8 @@ public class UserServiceImpl implements UserService {
 			return true;
 		}
 
-		JpaRepository<AuditableEntity, Long> entityRepository = applicationContext.getBean(entityRepositoryClazz);
+		JpaRepository<AuditableEntity, Long> entityRepository = applicationContext.getBean(
+				entityRepositoryClazz);
 
 		Optional<AuditableEntity> entity = entityRepository.findById(entityId);
 
