@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+@Slf4j
 @Service
 public class JwtServiceImpl implements JwtService {
 	@Value("${JWT_SECRET}")
@@ -24,16 +26,34 @@ public class JwtServiceImpl implements JwtService {
 	private long PERIOD;
 
 	public String generateToken(String userName) {
+		log.info("Generating token for user={}", userName);
+
 		final Map<String, Object> claims = new HashMap<>();
-		return createToken(claims, userName);
+		String token = createToken(claims, userName);
+
+		log.info("Created token={}", token);
+
+		return token;
 	}
 
 	public String extractUsername(final String token) {
-		return extractClaim(token, Claims::getSubject);
+		log.info("Extracting username from token={}", token);
+
+		String username = extractClaim(token, Claims::getSubject);
+
+		log.info("Extracted username={}", username);
+
+		return username;
 	}
 
 	public Date extractExpiration(final String token) {
-		return extractClaim(token, Claims::getExpiration);
+		log.info("Extracting expiration date from token={}", token);
+
+		Date expirationDate = extractClaim(token, Claims::getExpiration);
+
+		log.info("Extracted expirationDate={}", expirationDate);
+
+		return expirationDate;
 	}
 
 	public Boolean validateToken(final String token) {
