@@ -37,23 +37,11 @@ public class JwtServiceImpl implements JwtService {
 	}
 
 	public String extractUsername(final String token) {
-		log.info("Extracting username from token={}", token);
-
-		String username = extractClaim(token, Claims::getSubject);
-
-		log.info("Extracted username={}", username);
-
-		return username;
+		return extractClaim(token, Claims::getSubject);
 	}
 
 	public Date extractExpiration(final String token) {
-		log.info("Extracting expiration date from token={}", token);
-
-		Date expirationDate = extractClaim(token, Claims::getExpiration);
-
-		log.info("Extracted expirationDate={}", expirationDate);
-
-		return expirationDate;
+		return extractClaim(token, Claims::getExpiration);
 	}
 
 	public Boolean validateToken(final String token) {

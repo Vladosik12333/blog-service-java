@@ -35,7 +35,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
 			String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
-			log.info("JWT token={}", authHeader);
+			log.info("authHeader={}", authHeader);
 
 			if (Objects.isNull(authHeader) || !authHeader.startsWith("Bearer ")) {
 				filterChain.doFilter(request, response);
@@ -46,8 +46,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 			final String username = jwtService.extractUsername(token);
 			final Boolean isTokenValid = jwtService.validateToken(token);
 
+			log.info("token={} username={} isTokenValid={}", token, username, isTokenValid);
+
 			if (isTokenValid && Objects.nonNull(username)) {
 				UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+				log.info("User found by username extracted from JWT token={}", userDetails);
 
 				UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
 						userDetails,

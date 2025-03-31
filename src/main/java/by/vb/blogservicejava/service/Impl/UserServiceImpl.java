@@ -68,7 +68,13 @@ public class UserServiceImpl implements UserService {
 			final long entityId,
 			final Class<? extends JpaRepository<AuditableEntity, Long>> entityRepositoryClazz
 	) {
+		log.info("UserServiceImpl#hasOwnershipAccess. entityId={} entityRepositoryClazz={}",
+				entityId,
+				entityRepositoryClazz);
+
 		User user = AuthUtil.getCurrentUser();
+
+		log.info("UserServiceImpl#hasOwnershipAccess. user={}", user);
 
 		if (user.getRole() == RoleType.ADMIN) {
 			return true;
@@ -79,11 +85,15 @@ public class UserServiceImpl implements UserService {
 
 		Optional<AuditableEntity> entity = entityRepository.findById(entityId);
 
+		log.info("UserServiceImpl#hasOwnershipAccess. entity={}", entity);
+
 		if (entity.isEmpty()) {
 			return false;
 		}
 
 		User entityUser = getUserFromEntity(entity.get());
+
+		log.info("UserServiceImpl#hasOwnershipAccess. user from entity={}", entityUser);
 
 		if (Objects.isNull(entityUser)) {
 			return false;

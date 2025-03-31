@@ -31,7 +31,6 @@ public class PostServiceImpl implements PostService {
 			final PostFilterDto postFilterDto,
 			final PostSortDto postSortDto, final Pageable pageable
 	) {
-
 		Pageable sortedPageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize()
 				, postRepository.sortConditions(postSortDto.getSortFields()));
 
