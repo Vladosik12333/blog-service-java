@@ -13,7 +13,7 @@ public class PageResponseDto<T> extends BasicResponseDto {
 	private Metadata metadata;
 
 	public PageResponseDto(Page<T> page) {
-		this.metadata = new Metadata(page.getSize(), page.getNumber(), page.getTotalElements());
+		this.metadata = new Metadata(page.getNumber(), page.getSize(), page.getTotalElements());
 		this.data = page.getContent();
 		this.message = "Success";
 	}

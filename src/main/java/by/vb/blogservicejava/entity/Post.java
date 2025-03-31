@@ -2,6 +2,7 @@ package by.vb.blogservicejava.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class Post extends AuditableEntity {
 
 	@Builder.Default
 	@OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@BatchSize(size = 100)
 	private List<Reaction> reactions = new ArrayList<>();
 
 	public void addReaction(Reaction reaction) {
