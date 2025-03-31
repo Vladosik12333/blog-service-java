@@ -11,10 +11,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class ReactionServiceImpl implements ReactionService {
 	private final ReactionRepository reactionRepository;
@@ -31,6 +33,7 @@ public class ReactionServiceImpl implements ReactionService {
 				.map(reactionMapper::mapTo);
 	}
 
+	@Transactional
 	@Override
 	public Optional<ReactionDto> deleteReactionById(final long id) {
 		return reactionRepository.findById(id).map(reaction -> {
@@ -40,6 +43,7 @@ public class ReactionServiceImpl implements ReactionService {
 		}).map(reactionMapper::mapTo);
 	}
 
+	@Transactional
 	@Override
 	public ReactionDto createReaction(
 			ReactionCreateUpdateDto reactionCreateUpdateDto
@@ -51,6 +55,7 @@ public class ReactionServiceImpl implements ReactionService {
 				.orElseThrow();
 	}
 
+	@Transactional
 	@Override
 	public Optional<ReactionDto> updateReactionById(
 			long id,
