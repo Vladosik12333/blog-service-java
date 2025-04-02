@@ -1,16 +1,16 @@
-FROM maven:3.9.9-amazoncorretto-23 AS build
-
-COPY pom.xml /build/
+FROM maven:3.9.9-amazoncorretto-23-alpine AS build
 
 WORKDIR /build/
 
-RUN mvn dependency:go-offline
+COPY pom.xml /build/
 
 COPY src /build/src/
 
+RUN mvn dependency:go-offline
+
 RUN mvn package -DskipTests
 
-FROM amazoncorretto:23-jdk
+FROM amazoncorretto:23-alpine-jdk
 
 ARG JAR_FILE=/build/target/*.jar
 
