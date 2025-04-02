@@ -2,10 +2,6 @@
 
 -- changeset vbabiak:2
 
--- Set schema to blog_service_java
-
-SET search_path TO blog_service_java;
-
 -- Modify tables. Add is_removed, created_at and modified_at columns
 
 ALTER TABLE users

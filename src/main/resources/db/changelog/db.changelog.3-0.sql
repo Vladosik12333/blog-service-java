@@ -2,10 +2,6 @@
 
 -- changeset vbabiak:3
 
--- Set schema to blog_service_java
-
-SET search_path TO blog_service_java;
-
 -- Modify tables. Delete is_removed.
 
 ALTER TABLE users

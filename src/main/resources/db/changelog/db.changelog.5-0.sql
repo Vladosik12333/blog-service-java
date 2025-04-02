@@ -1,10 +1,6 @@
 -- liquibase formatted sql
 
--- changeset vbabiak:3
-
--- Set schema to blog_service_java
-
-SET search_path TO blog_service_java;
+-- changeset vbabiak:5
 
 -- Modify table users. Delete is_removed.
 

@@ -268,7 +268,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"reactionType\": \"LIKE\",\n    \"postId\": 1\n}",
+							"raw": "{\n    \"reactionType\": \"LIKE\",\n    \"postId\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -373,7 +373,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"adminL\",\n    \"password\": \"adminL\"\n}",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -2,10 +2,6 @@
 
 -- changeset vbabiak:1
 
--- Set schema to blog_service_java
-
-SET search_path TO blog_service_java;
-
 -- Drop tables before creating them
 
 DROP TABLE IF EXISTS users;

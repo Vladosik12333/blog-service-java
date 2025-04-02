@@ -1,0 +1,23 @@
+services:
+  database:
+    image: postgres:latest
+    container_name: database
+    env_file: ".env"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+
+  blog-service-java:
+    build:
+      context: .
+    container_name: app
+    env_file: ".env"
+    environment:
+      - SPRING_DATASOURCE_URL=${DB_URL}database:5432/${DB_NAME}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
