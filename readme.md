@@ -26,6 +26,7 @@ using a JWT token.
 
 ## Technologies
 
+<p align="left">
 <img src="https://img.shields.io/badge/Language-Java 23-orange.svg" alt="Language - Java 23">
 <img src="https://img.shields.io/badge/Framework-Spring Boot 3.4.2-green.svg" alt="Framework - 
 Spring Boot 3.4.2">
@@ -45,6 +46,7 @@ Security">
 <img src="https://img.shields.io/badge/Library-h2database-blue.svg" alt="Library - h2database">
 <img src="https://img.shields.io/badge/Library-logbook-blue.svg" alt="Library - logbook">
 <img src="https://img.shields.io/badge/Library-dotenv-blue.svg" alt="Library - dotenv">
+</p>
 
 ## Authors / Contributors / Credits
 
