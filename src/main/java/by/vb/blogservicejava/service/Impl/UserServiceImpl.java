@@ -8,6 +8,7 @@ import by.vb.blogservicejava.dto.User.UserDto;
 import by.vb.blogservicejava.entity.AuditableEntity;
 import by.vb.blogservicejava.entity.RoleType;
 import by.vb.blogservicejava.entity.User;
+import by.vb.blogservicejava.exception.NotUniqueValueException;
 import by.vb.blogservicejava.mapper.Impl.UserCreateUpdateMapper;
 import by.vb.blogservicejava.mapper.Impl.UserMapper;
 import by.vb.blogservicejava.service.JwtService;
@@ -42,11 +43,15 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	@Override
 	public UserDto signUp(final UserCreateUpdateDto userCreateUpdateDto) {
+		if (userRepository.findByUsername(userCreateUpdateDto.getUsername()).isPresent()) {
+			throw new NotUniqueValueException("Username already exists");
+		}
+
 		return Optional.of(userCreateUpdateDto)
 				.map(userCreateUpdateMapper::mapTo)
 				.map(userRepository::save)
 				.map(userMapper::mapTo)
-				.orElseThrow();
+				.orElse(null);
 	}
 
 	@Override

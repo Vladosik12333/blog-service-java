@@ -3,6 +3,7 @@ package by.vb.blogservicejava.config;
 import by.vb.blogservicejava.dto.Response.ErrorResponseDto;
 import by.vb.blogservicejava.exception.NotAuthorizedException;
 import by.vb.blogservicejava.exception.NotFoundResourceException;
+import by.vb.blogservicejava.exception.NotUniqueValueException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.security.SignatureException;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -164,6 +165,21 @@ public class GlobalExceptionHandler {
 		errorResponseDto.setMessage("The JWT token is expired.");
 
 		return ResponseEntity.status(HttpStatus.FORBIDDEN)
+				.body(errorResponseDto);
+	}
+
+	@ExceptionHandler(NotUniqueValueException.class)
+	public ResponseEntity<ErrorResponseDto> handleNotUniqueValueException(
+			final NotUniqueValueException exception
+	) {
+		log.warn("NotUniqueValueException. Message={} Stack={}", exception.getMessage(),
+				exception.getStackTrace());
+		ErrorResponseDto errorResponseDto = new ErrorResponseDto();
+
+		errorResponseDto.setCode(HttpStatus.BAD_REQUEST.value());
+		errorResponseDto.setMessage(exception.getMessage());
+
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 				.body(errorResponseDto);
 	}
 }
