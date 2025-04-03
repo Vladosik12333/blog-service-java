@@ -17,16 +17,10 @@
     <name>blog-service-java</name>
     <description>blog-service-java</description>
 
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-
     <properties>
         <java.version>23</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
