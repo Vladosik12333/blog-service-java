@@ -46,9 +46,9 @@ Security">
 <img src="https://img.shields.io/badge/Library-logbook-blue.svg" alt="Library - logbook">
 <img src="https://img.shields.io/badge/Library-dotenv-blue.svg" alt="Library - dotenv">
 
-## Authors / Contributors / Credits
+## Authors
 
-- [Developer](https://github.com/Vladosik12333)
+[Vladyslav Babiak - Developer](https://github.com/Vladosik12333)
 
 ## Copyright & Licensing Information
 
