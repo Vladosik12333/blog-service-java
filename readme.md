@@ -23,7 +23,7 @@ using a JWT token.
 7. Use GET /health-check/ping expecting response "Success" 200 to verify the service running
 
 > Use login "admin" and password "admin" to log in.
-> 
+
 ## Technologies
 
 <img src="https://img.shields.io/badge/Language-Java 23-orange.svg" alt="Language - Java 23">
