@@ -39,6 +39,7 @@ Security">
 <img src="https://img.shields.io/badge/Spring Module-Validation-green.svg" alt="Spring Module 
 - Validation">
 <img src="https://img.shields.io/badge/Library-PostgreSQL-red.svg" alt="Library - PostgreSQL">
+<img src="https://img.shields.io/badge/Library-Hibernate-red.svg" alt="Library - PostgreSQL">
 <img src="https://img.shields.io/badge/Library-Lombok-red.svg" alt="Library - Lombok">
 <img src="https://img.shields.io/badge/Library-Liquibase-red.svg" alt="Library - Liquibase">
 <img src="https://img.shields.io/badge/Library-OpenAPI-red.svg" alt="Library - OpenAPI">
