@@ -30,7 +30,7 @@ using a JWT token.
 <img src="https://img.shields.io/badge/Language-Java 23-orange.svg" alt="Language - Java 23">
 <img src="https://img.shields.io/badge/Framework-Spring Boot 3.4.2-green.svg" alt="Framework - 
 Spring Boot 3.4.2">
-<img src="https://img.shields.io/badge/Spring Module-Web-MVC-green.svg" alt="Spring Module - Web">
+<img src="https://img.shields.io/badge/Spring Module-Web MVC-green.svg" alt="Spring Module - Web">
 <img src="https://img.shields.io/badge/Spring Module-Data JPA-green.svg" alt="Spring Module - 
 Data JPA">
 <img src="https://img.shields.io/badge/Spring Module-Security-green.svg" alt="Spring Module - 
@@ -38,8 +38,8 @@ Security">
 <img src="https://img.shields.io/badge/Spring Module-Test-green.svg" alt="Spring Module - Test">
 <img src="https://img.shields.io/badge/Spring Module-Validation-green.svg" alt="Spring Module 
 - Validation">
-<img src="https://img.shields.io/badge/Library-PostgreSQL-red.svg" alt="Library - PostgreSQL">
-<img src="https://img.shields.io/badge/Library-Hibernate-red.svg" alt="Library - PostgreSQL">
+<img src="https://img.shields.io/badge/Library-JUnit-red.svg" alt="Library - JUnit">
+<img src="https://img.shields.io/badge/Library-Mockito-red.svg" alt="Library - Mockito">
 <img src="https://img.shields.io/badge/Library-Lombok-red.svg" alt="Library - Lombok">
 <img src="https://img.shields.io/badge/Library-Liquibase-red.svg" alt="Library - Liquibase">
 <img src="https://img.shields.io/badge/Library-OpenAPI-red.svg" alt="Library - OpenAPI">
@@ -47,7 +47,8 @@ Security">
 <img src="https://img.shields.io/badge/Library-h2database-red.svg" alt="Library - h2database">
 <img src="https://img.shields.io/badge/Library-logbook-red.svg" alt="Library - logbook">
 <img src="https://img.shields.io/badge/Library-dotenv-red.svg" alt="Library - dotenv">
-<img src="https://img.shields.io/badge/Technology-Docker-blue.svg" alt="Library - dotenv">
+<img src="https://img.shields.io/badge/Database-PostgreSQL-blue.svg" alt="Database - PostgreSQL">
+<img src="https://img.shields.io/badge/Technology-Docker-blue.svg" alt="Technology - Docker">
 </p>
 
 ## Authors
