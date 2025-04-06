@@ -30,13 +30,13 @@ using a JWT token.
 <img src="https://img.shields.io/badge/Language-Java 23-orange.svg" alt="Language - Java 23">
 <img src="https://img.shields.io/badge/Framework-Spring Boot 3.4.2-green.svg" alt="Framework - 
 Spring Boot 3.4.2">
-<img src="https://img.shields.io/badge/Spring Module-Web MVC-green.svg" alt="Spring Module - Web">
-<img src="https://img.shields.io/badge/Spring Module-Data JPA-green.svg" alt="Spring Module - 
+<img src="https://img.shields.io/badge/Spring Boot-Web MVC-green.svg" alt="Spring Boot - Web">
+<img src="https://img.shields.io/badge/Spring Boot-Data JPA-green.svg" alt="Spring Boot - 
 Data JPA">
-<img src="https://img.shields.io/badge/Spring Module-Security-green.svg" alt="Spring Module - 
+<img src="https://img.shields.io/badge/Spring Boot-Security-green.svg" alt="Spring Boot - 
 Security">
-<img src="https://img.shields.io/badge/Spring Module-Test-green.svg" alt="Spring Module - Test">
-<img src="https://img.shields.io/badge/Spring Module-Validation-green.svg" alt="Spring Module 
+<img src="https://img.shields.io/badge/Spring Boot-Test-green.svg" alt="Spring Boot - Test">
+<img src="https://img.shields.io/badge/Spring Boot-Validation-green.svg" alt="Spring Boot 
 - Validation">
 <img src="https://img.shields.io/badge/Library-JUnit-red.svg" alt="Library - JUnit">
 <img src="https://img.shields.io/badge/Library-Mockito-red.svg" alt="Library - Mockito">
