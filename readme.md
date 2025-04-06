@@ -1,8 +1,6 @@
 # Blog Service Java
 
-The Java service serves as a REST API for social network allowing CRUD operations
-on posts and reactions. Also, it includes authentication and authorization functionality
-using a JWT token.
+The Java service serves as a REST API for social networks allowing CRUD operations on posts and reactions. It also includes authentication and authorization functionality using an OAuth 2.0 protocol.
 
 ## Screenshots
 
